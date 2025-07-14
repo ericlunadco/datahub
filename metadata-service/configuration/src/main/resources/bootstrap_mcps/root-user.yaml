@@ -1,9 +1,9 @@
-- entityUrn: urn:li:corpuser:datahub
+- entityUrn: urn:li:corpuser:workforce
   entityType: corpuser
   aspectName: corpUserInfo
   changeType: UPSERT
   aspect:
     active: true
-    displayName: DataHub
-    title: DataHub Root User
+    displayName: Admin Workforce
+    title: Governance Administrator
     system: true

@@ -12,7 +12,7 @@ const Container = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     align-items: start;
     justify-content: start;
     padding: ${(props) => (props.$isShowNavBarRedesign ? '16px 20px' : '16px 24px 24px 24px')};
-    background-color: #fff;
+    background-color: ${(props) => props.theme.styles['body-background-color']};
 
     ${(props) =>
         !props.$isShowNavBarRedesign &&

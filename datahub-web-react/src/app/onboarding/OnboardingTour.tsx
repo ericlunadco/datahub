@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button } from '@src/alchemy-components/components/Button/Button';
 import React, { useContext, useEffect, useState } from 'react';
 import Tour from 'reactour';
 
@@ -72,7 +72,7 @@ export const OnboardingTour = ({ stepIds }: Props) => {
             rounded={10}
             scrollDuration={500}
             accentColor={accentColor}
-            lastStepNextButton={<Button>Let&apos;s go!</Button>}
+            lastStepNextButton={<Button color="yellow" variant="filled">Let&apos;s go!</Button>}
             className="onboarding-tour"
         />
     );

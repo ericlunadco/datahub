@@ -12,13 +12,13 @@ export const RolesOnboardingConfig: OnboardingStep[] = [
         content: (
             <Typography.Paragraph>
                 <p>
-                    Welcome to DataHub <strong>Roles</strong>!
+                    Welcome to Governance <strong>Roles</strong>!
                 </p>
                 <p>
-                    <strong>Roles</strong> are the recommended way to manage permissions on DataHub.
+                    <strong>Roles</strong> are the recommended way to manage permissions on Governance.
                 </p>
                 <p>
-                    DataHub currently supports three out-of-the-box Roles: <strong>Admin</strong>,{' '}
+                    Governance currently supports three out-of-the-box Roles: <strong>Admin</strong>,{' '}
                     <strong>Editor</strong> and <strong>Reader</strong>.
                 </p>
                 <p>

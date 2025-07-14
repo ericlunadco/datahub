@@ -1,5 +1,5 @@
-import { Button, SearchBar, SimpleSelect } from '@components';
-import { Modal, Pagination, message } from 'antd';
+import { Button, Modal, SearchBar, SimpleSelect } from '@components';
+import { Pagination, message } from 'antd';
 import { ArrowClockwise } from 'phosphor-react';
 import * as QueryString from 'query-string';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -152,6 +152,10 @@ export const IngestionSourceList = ({ showCreateModal, setShowCreateModal }: Pro
     const [sourceFilter, setSourceFilter] = useState(IngestionSourceType.ALL);
     const [sort, setSort] = useState<SortCriterion>();
     const [hideSystemSources, setHideSystemSources] = useState(true);
+    
+    // State for execution confirmation modal
+    const [showExecutionModal, setShowExecutionModal] = useState(false);
+    const [executionSourceUrn, setExecutionSourceUrn] = useState<string | undefined>(undefined);
 
     // Add a useEffect to handle the showCreateModal prop
     useEffect(() => {
@@ -452,17 +456,21 @@ export const IngestionSourceList = ({ showCreateModal, setShowCreateModal }: Pro
     };
 
     const onExecute = (urn: string) => {
-        Modal.confirm({
-            title: `Confirm Source Execution`,
-            content: "Click 'Execute' to run this ingestion source.",
-            onOk() {
-                executeIngestionSource(urn);
-            },
-            onCancel() {},
-            okText: 'Execute',
-            maskClosable: true,
-            closable: true,
-        });
+        setExecutionSourceUrn(urn);
+        setShowExecutionModal(true);
+    };
+
+    const handleExecuteConfirm = () => {
+        if (executionSourceUrn) {
+            executeIngestionSource(executionSourceUrn);
+            setShowExecutionModal(false);
+            setExecutionSourceUrn(undefined);
+        }
+    };
+
+    const handleExecuteCancel = () => {
+        setShowExecutionModal(false);
+        setExecutionSourceUrn(undefined);
     };
 
     const onDelete = (urn: string) => {
@@ -567,6 +575,28 @@ export const IngestionSourceList = ({ showCreateModal, setShowCreateModal }: Pro
             {isViewingRecipe && <RecipeViewerModal recipe={focusSource?.config?.recipe} onCancel={onCancel} />}
             {focusExecutionUrn && (
                 <ExecutionDetailsModal urn={focusExecutionUrn} open onClose={() => setFocusExecutionUrn(undefined)} />
+            )}
+            {showExecutionModal && (
+                <Modal
+                    title="Confirm Source Execution"
+                    buttons={[
+                        {
+                            text: 'Cancel',
+                            variant: 'outline',
+                            onClick: handleExecuteCancel,
+                        },
+                        {
+                            text: 'Execute',
+                            variant: 'filled',
+                            color: 'yellow',
+                            onClick: handleExecuteConfirm,
+                        },
+                    ]}
+                    onCancel={handleExecuteCancel}
+                    dataTestId="confirm-execution-modal"
+                >
+                    Click 'Execute' to run this ingestion source.
+                </Modal>
             )}
         </>
     );

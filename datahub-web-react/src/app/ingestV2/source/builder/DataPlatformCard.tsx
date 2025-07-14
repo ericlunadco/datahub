@@ -2,7 +2,6 @@ import { Button, Image } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 
-import { REDESIGN_COLORS } from '@app/entity/shared/constants';
 import colors from '@src/alchemy-components/theme/foundations/colors';
 
 const Container = styled(Button)`
@@ -13,11 +12,11 @@ const Container = styled(Button)`
     border-radius: 8px;
     align-items: start;
     flex-direction: column;
-    border: 1px solid ${REDESIGN_COLORS.GREY[2]};
-    background-color: ${REDESIGN_COLORS.GREY[0]};
+    border: 1px solid ${colors.gray[200]};
+    background-color: ${colors.secondary[50]};
     &&:hover {
         border: 1px solid ${colors.primary[30]};
-        background-color: ${REDESIGN_COLORS.GREY[0]};
+        background-color: ${colors.secondary[50]};
     }
     white-space: unset;
 `;
@@ -45,7 +44,7 @@ const Title = styled.div`
 const Description = styled.div`
     word-break: break-word;
     text-align: left;
-    color: ${REDESIGN_COLORS.GREY[5]};
+    color: ${colors.secondary[45]} !important;
 `;
 
 type Props = {

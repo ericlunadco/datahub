@@ -824,6 +824,8 @@ a {
     cursor: pointer;
     padding: 4px;
     line-height: 1;
+    width: 16px;
+    height: 16px;
   }
 
   .reactour__close:hover {
@@ -1191,4 +1193,13 @@ a {
 .ant-message-notice-content {
   background-color: #141C22 !important; // layout-body-background
   color: #FFFFFF !important; // text-color
+}
+
+// Form label overrides to ensure white text
+.ant-form-item-label > label {
+  color: #FFFFFF !important;
+}
+
+.ant-form-vertical .ant-form-item-label > label {
+  color: #FFFFFF !important;
 }

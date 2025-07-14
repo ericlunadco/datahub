@@ -51,7 +51,7 @@ export const ResultWrapper = styled.div<{
     ${(props) =>
         props.showUpdatedStyles &&
         `    
-        background-color: white;
+        background-color: ${props.theme.styles['component-background']};
         border-radius: ${props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '8px'};
         padding: 16px 20px;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08);

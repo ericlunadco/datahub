@@ -1,5 +1,5 @@
-import { Pagination, SearchBar, SimpleSelect } from '@components';
-import { InputRef, Modal, message } from 'antd';
+import { Button, Modal, Pagination, SearchBar, SimpleSelect } from '@components';
+import { InputRef, message } from 'antd';
 import * as QueryString from 'query-string';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
@@ -155,6 +155,10 @@ export const IngestionSourceList = ({
     const [removedUrns, setRemovedUrns] = useState<string[]>([]);
     const [sourceFilter, setSourceFilter] = useState(IngestionSourceType.ALL);
     const [sort, setSort] = useState<SortCriterion>();
+    
+    // State for execution confirmation modal
+    const [showExecutionModal, setShowExecutionModal] = useState(false);
+    const [executionSourceUrn, setExecutionSourceUrn] = useState<string | undefined>(undefined);
 
     // Debounce the search query
     useDebounce(
@@ -445,20 +449,24 @@ export const IngestionSourceList = ({
 
     const onExecute = useCallback(
         (urn: string) => {
-            Modal.confirm({
-                title: `Confirm Source Execution`,
-                content: "Click 'Execute' to run this ingestion source.",
-                onOk() {
-                    executeIngestionSource(urn);
-                },
-                onCancel() {},
-                okText: 'Execute',
-                maskClosable: true,
-                closable: true,
-            });
+            setExecutionSourceUrn(urn);
+            setShowExecutionModal(true);
         },
-        [executeIngestionSource],
+        [],
     );
+
+    const handleExecuteConfirm = useCallback(() => {
+        if (executionSourceUrn) {
+            executeIngestionSource(executionSourceUrn);
+            setShowExecutionModal(false);
+            setExecutionSourceUrn(undefined);
+        }
+    }, [executeIngestionSource, executionSourceUrn]);
+
+    const handleExecuteCancel = useCallback(() => {
+        setShowExecutionModal(false);
+        setExecutionSourceUrn(undefined);
+    }, []);
 
     const onDelete = useCallback(
         (urn: string) => {
@@ -583,6 +591,28 @@ export const IngestionSourceList = ({
                     queryInputs={queryInputs}
                 />
             ))}
+            {showExecutionModal && (
+                <Modal
+                    title="Confirm Source Execution"
+                    buttons={[
+                        {
+                            text: 'Cancel',
+                            variant: 'outline',
+                            onClick: handleExecuteCancel,
+                        },
+                        {
+                            text: 'Execute',
+                            variant: 'filled',
+                            color: 'yellow',
+                            onClick: handleExecuteConfirm,
+                        },
+                    ]}
+                    onCancel={handleExecuteCancel}
+                    dataTestId="confirm-execution-modal"
+                >
+                    Click 'Execute' to run this ingestion source.
+                </Modal>
+            )}
         </>
     );
 };

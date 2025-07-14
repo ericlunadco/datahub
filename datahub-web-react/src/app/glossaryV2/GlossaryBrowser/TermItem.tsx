@@ -13,7 +13,7 @@ import { ChildGlossaryTermFragment } from '@graphql/glossaryNode.generated';
 const TermWrapper = styled.div<{ $isSelected: boolean; $depth: number }>`
     padding: 13px 0;
     padding-left: calc(${(props) => (props.$depth ? props.$depth * 18 + 12 : 18)}px);
-    background-color: ${(props) => props.$isSelected && REDESIGN_COLORS.HIGHLIGHT_YELLOW};
+    background-color: ${(props) => props.$isSelected && colors.primary[30]};
     display: flex;
 `;
 
@@ -24,7 +24,7 @@ const nameStyles = `
     font-size: 12px;
     font-weight: 400;
     line-height: normal;
-    color: ${REDESIGN_COLORS.TEXT_HEADING};
+    color: #FFFFFF !important;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -46,7 +46,6 @@ export const TermLink = styled(Link) <TermLinkProps>`
     ${nameStyles}
 
     ${(props) => props.$isChildNode && `opacity: 1;`}
-    ${(props) => props.$areChildrenVisible && `color: ${colors.primary[30]} !important; font-weight: 500; opacity: 1;`}
     ${(props) => props.$isSelected && `color: ${colors.black} !important; font-weight: 700; opacity: 1;`}
 `;
 

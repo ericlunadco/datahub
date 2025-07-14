@@ -31,7 +31,7 @@ export const PillContainer = styled.div<{ enabled?: boolean; active?: boolean; i
     height: 24px;
     padding-left: 8px;
     padding-right: ${({ isHighlightedTextPresent }) => (isHighlightedTextPresent ? '0px' : '8px')};
-    background-color: ${({ active, theme }) => (active ? `${theme.styles['primary-color']}` : '#f7f7f7')};
+    background-color: ${({ active, theme }) => (active ? `${theme.styles['primary-color']}` : '#141B22')};
     cursor: pointer;
     border-radius: 20px;
     text-align: center;
@@ -52,7 +52,7 @@ export const PillContainer = styled.div<{ enabled?: boolean; active?: boolean; i
 
     :hover {
         color: ${({ enabled }) => (enabled ? 'white' : '#b0a2c2')};
-        background-color: ${({ enabled, theme }) => (enabled ? `${theme.styles['primary-color']}` : '#f7f7f7')};
+        background-color: ${({ enabled, theme }) => (enabled ? `${theme.styles['primary-color']}` : '#e8e8e8')};
 
         svg {
             color: ${({ enabled }) => (enabled ? 'white' : '#b0a2c2')};
@@ -73,7 +73,7 @@ const Container = styled.div`
 `;
 
 const CountContainer = styled.div<{ active?: boolean }>`
-    background-color: ${({ active }) => (active ? 'rgba(255, 255, 255, 0.2)' : '#eee')};
+    background-color: ${({ active }) => (active ? 'rgba(255, 255, 255, 0.2)' : '#25323F')};
     border-radius: 20px;
     height: 24px;
     min-width: 35px;

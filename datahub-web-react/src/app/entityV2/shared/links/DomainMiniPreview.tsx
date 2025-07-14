@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { ANTD_GRAY } from '@app/entity/shared/constants';
+import colors from '@src/alchemy-components/theme/foundations/colors';
 import EntityCount from '@app/entityV2/shared/containers/profile/header/EntityCount';
 import { DomainColoredIcon } from '@app/entityV2/shared/links/DomainColoredIcon';
 import { HoverEntityTooltip } from '@app/recommendations/renderer/component/HoverEntityTooltip';
@@ -14,7 +15,7 @@ const DomainLinkContainer = styled.div`
     display: flex;
     flex-direction: row;
     :hover {
-        background-color: #f5f7fa;
+        background-color: ${colors.secondary[50]};
     }
     border-radius: 12px;
     cursor: pointer;
@@ -30,22 +31,30 @@ const DomainInfoContainer = styled.div`
 const DomainTitle = styled.div`
     font-size: 12px;
     font-weight: 400;
-    color: ${ANTD_GRAY[9]};
+    color: ${colors.primary[10]};
     font-family: Mulish;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 200px;
+
+    ${DomainLinkContainer}:hover & {
+        color: ${colors.primary[10]};
+    }
 `;
 
 const DomainContents = styled.div`
     font-size: 12px;
     font-weight: 400;
-    color: ${ANTD_GRAY[7]};
+    color: ${colors.secondary[45]};
     font-family: Mulish;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    ${DomainLinkContainer}:hover & {
+        color: ${colors.secondary[45]};
+    }
 `;
 
 export const DomainMiniPreview = ({ domain }: { domain: Domain }): JSX.Element => {

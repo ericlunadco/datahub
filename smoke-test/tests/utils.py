@@ -38,13 +38,13 @@ def get_admin_username() -> str:
 
 def get_admin_credentials():
     return (
-        os.getenv("ADMIN_USERNAME", "datahub"),
+        os.getenv("ADMIN_USERNAME", "workforce"),
         os.getenv("ADMIN_PASSWORD", "datahub"),
     )
 
 
 def get_root_urn():
-    return "urn:li:corpuser:datahub"
+    return "urn:li:corpuser:workforce"
 
 
 def get_gms_url():

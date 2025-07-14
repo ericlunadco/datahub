@@ -1,4 +1,4 @@
-- entityUrn: urn:li:corpuser:datahub
+- entityUrn: urn:li:corpuser:workforce
   entityType: corpuser
   aspectName: corpUserEditableInfo
   changeType: CREATE

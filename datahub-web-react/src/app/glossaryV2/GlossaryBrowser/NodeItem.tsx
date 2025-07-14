@@ -3,6 +3,7 @@ import { colors } from '@components';
 import { KeyboardArrowDownRounded, KeyboardArrowRightRounded } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
+import themeColors from '@src/alchemy-components/theme/foundations/colors';
 
 import { sortGlossaryNodes } from '@app/entityV2/glossaryNode/utils';
 import { sortGlossaryTerms } from '@app/entityV2/glossaryTerm/utils';
@@ -45,7 +46,7 @@ const NodeWrapper = styled.div<{ $isSelected: boolean; $depth: number }>`
     display: flex;
     font-size: 16px;
     padding: 13px 0;
-    background-color: ${(props) => props.$isSelected && REDESIGN_COLORS.HIGHLIGHT_YELLOW};
+    background-color: ${(props) => props.$isSelected && themeColors.primary[30]};
     padding-left: calc(${(props) => (props.$depth ? props.$depth * 18 + 12 : 12)}px);
 `;
 

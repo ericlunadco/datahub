@@ -223,7 +223,7 @@ export const ManagePolicies = () => {
                 return (
                     <PolicyName
                         onClick={() => onViewPolicy(record.policy)}
-                        style={{ color: record?.editable ? '#000000' : '#8C8C8C' }}
+                        style={{ color: record?.editable ? '#FFFFFF' : '#A0A0A0' }}
                     >
                         {record?.name}
                     </PolicyName>

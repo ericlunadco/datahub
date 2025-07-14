@@ -5,7 +5,7 @@ export const INPUT_MAX_HEIGHT = '40px';
 export const formLabelTextStyles = {
     fontWeight: typography.fontWeights.normal,
     fontSize: typography.fontSizes.md,
-    color: colors.white,
+    color: colors.gray[600],
 };
 
 export const inputValueTextStyles = (size = 'md') => ({
