@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import analytics, { EventType } from '@app/analytics';
-import { IntroduceYourselfLeftSidebar } from '@app/homeV2/introduce/IntroduceYourselfLeftSidebar';
 import { IntroduceYourselfMainContent } from '@app/homeV2/introduce/IntroduceYourselfMainContent';
 import colors from '@src/alchemy-components/theme/foundations/colors';
 
@@ -20,7 +19,6 @@ export const IntroduceYourself = () => {
     return (
         <>
             <Container>
-                <IntroduceYourselfLeftSidebar />
                 <IntroduceYourselfMainContent />
             </Container>
         </>

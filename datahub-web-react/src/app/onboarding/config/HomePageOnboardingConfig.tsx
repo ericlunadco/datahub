@@ -1,10 +1,9 @@
-import { Image, Typography } from 'antd';
+import { Typography } from 'antd';
 import React from 'react';
 
 import { ANTD_GRAY } from '@app/entity/shared/constants';
 import { OnboardingStep } from '@app/onboarding/OnboardingStep';
 
-import dataHubFlowDiagram from '@images/datahub-flow-diagram-light.png';
 
 export const GLOBAL_WELCOME_TO_DATAHUB_ID = 'global-welcome-to-datahub';
 export const HOME_PAGE_INGESTION_ID = 'home-page-ingestion';
@@ -21,13 +20,6 @@ export const HomePageOnboardingConfig: OnboardingStep[] = [
         id: GLOBAL_WELCOME_TO_DATAHUB_ID,
         content: (
             <div>
-                <Image
-                    preview={false}
-                    height={184}
-                    width={500}
-                    style={{ marginLeft: '50px' }}
-                    src={dataHubFlowDiagram}
-                />
                 <Typography.Title level={3}>Welcome to Governance! 👋</Typography.Title>
                 <Typography.Paragraph style={{ lineHeight: '22px' }}>
                     <strong>DataHub</strong> helps you discover and organize the important data within your
