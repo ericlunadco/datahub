@@ -2,7 +2,6 @@
 const SKIP_ONBOARDING_TOUR_KEY = 'skipOnboardingTour';
 
 export default function useShouldSkipOnboardingTour() {
-    const shouldSkipOnboardingTour = localStorage.getItem(SKIP_ONBOARDING_TOUR_KEY);
-
-    return shouldSkipOnboardingTour === 'true';
+    // Always skip onboarding tours
+    return true;
 }
